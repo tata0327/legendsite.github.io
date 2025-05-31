@@ -38,11 +38,12 @@ valid_cluster_company_collection1 = db["valid_cluster_company1"]
 valid_cluster_company_collection2 = db["valid_cluster_company1"]
 valid_cluster_company_collection3 = db["valid_cluster_company1"]
 ################################################################################################fastapi
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))   # back.py가 있는 디렉토리
+STATIC_DIR = os.path.join(BASE_DIR, "static")            # 같은 폴더 안에 static 폴더를 두고 싶다면
+TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")      # 같은 폴더 안에 static 폴더를 두고 싶다면
 
 app = FastAPI()
 
-STATIC_DIR = "C:/Users/김우영/Desktop/목숨을 걸었어/test/newsbot/webpage/back/static"
-TEMPLATES_DIR = "C:/Users/김우영/Desktop/목숨을 걸었어/test/newsbot/webpage/back/templates"
 API_KEY = os.getenv('API_KEY')
 
 # static 경로 mount
