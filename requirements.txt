@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pymongo
+dnspython
+requests
+beautifulsoup4
+python-dotenv
+jinja2
+aiofiles
