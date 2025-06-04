@@ -164,8 +164,8 @@
                                 </svg>
                             </div>
                             <div class="home-links-container1">
-                                <a href="#Issues" class="home-link10 Anchor">TOP Issues</a><a href="#Market" class="home-link13 Anchor">TOP Market</a><a href="#Countries" class="home-link11 Anchor">TOP Countries</a>
-                                <a href="#Peoples" class="home-link12 Anchor">TOP People</a><a href="#Social" class="home-link14 Anchor">Follow more</a>
+                                <a href="#Issues" class="home-link10 Anchor">TOP Issues</a><a href="#Market" class="home-link13 Anchor">TOP Market</a><a href="#Business" class="home-link11 Anchor">TOP Business</a>
+                                <a href="#Countries" class="home-link12 Anchor">TOP countries</a><a href="#Social" class="home-link14 Anchor">Follow more</a>
                             </div>
                         </div>
                         <div class="home-right-side"><button class="home-cta-btn10 Anchor button">Log In</button></div>
@@ -1089,10 +1089,10 @@
                                 <h1 class="home-text41">Company name</h1>
                                 <span class="home-text42">position</span><span class="home-date-time11"><date-time-primitive format="DD/MM/YYYY" date="Fri Apr 25 2025 00:42:06 GMT+0900 (한국 표준시)"></date-time-primitive></span>
                             </div>
-                            <div class="people-wrapper">
+                            <div class="companies-wrapper">
                                 {% set ns = namespace(counter = 11) %}
                                 {% for group in valid_cluster_company1_group %}
-                                <div class="slide-people-grid-1">
+                                <div class="slide-companies-grid-1">
                                     {% for cluster in group %}
                                     <div class="home-right-section2" onclick="openModal({{ ns.counter }})">
                                         <h2 class="home-text39">{{ cluster.report_title }}</h2>
@@ -1104,7 +1104,7 @@
                                 </div>
                                 {% endfor %}
                             </div>
-                            <div class="people-next-button" onclick="nextSlide(1)">></div>
+                            <div class="companies-next-button" onclick="nextSlide_companies(1)"></div>
 
                         </div>
                         <div class="home-container17">
@@ -1113,9 +1113,9 @@
                                 <h1 class="home-text45">Company name</h1>
                                 <span class="home-text46">position</span><span class="home-date-time13"><date-time-primitive format="DD/MM/YYYY" date="Fri Apr 25 2025 00:42:06 GMT+0900 (한국 표준시)"></date-time-primitive></span>
                             </div>
-                            <div class="people-wrapper">
+                            <div class="companies-wrapper">
                                 {% for group in valid_cluster_company2_group %}
-                                <div class="slide-people-grid-2">
+                                <div class="slide-companies-grid-2">
                                     {% for cluster in group %}
                                     <div class="home-right-section2" onclick="openModal({{ ns.counter }})">
                                         <h2 class="home-text39">{{ cluster.report_title }}</h2>
@@ -1127,7 +1127,7 @@
                                 </div>
                                 {% endfor %}
                             </div>
-                            <div class="people-next-button" onclick="nextSlide(2)">></div>
+                            <div class="companies-next-button" onclick="nextSlide_companies(2)"></div>
                         </div>
                         <div class="home-container17">
 
@@ -1135,9 +1135,9 @@
                                 <h1 class="home-text49">Company name</h1>
                                 <span class="home-text50">position</span><span class="home-date-time15"><date-time-primitive format="DD/MM/YYYY" date="Fri Apr 25 2025 00:42:06 GMT+0900 (한국 표준시)"></date-time-primitive></span>
                             </div>
-                            <div class="people-wrapper">
+                            <div class="companies-wrapper">
                                 {% for group in valid_cluster_company3_group %}
-                                <div class="slide-people-grid-3">
+                                <div class="slide-companies-grid-3">
                                     {% for cluster in group %}
                                     <div class="home-right-section2" onclick="openModal({{ ns.counter }})">
                                         <h2 class="home-text39">{{ cluster.report_title }}</h2>
@@ -1149,7 +1149,7 @@
                                 </div>
                                 {% endfor %}
                             </div>
-                            <div class="people-next-button" onclick="nextSlide(3)">></div>
+                            <div class="companies-next-button" onclick="nextSlide_companies(3)"></div>
                         </div>
                     </div>
                 </div>
@@ -1626,7 +1626,298 @@
                     </div>                                            
                 </div>
                 <div class="home-section-separator3"></div>
+                <div id="Countries" class="home-top-market">
+                    <div class="home-heading-container2">
+                        <h2 class="home-text37 Section-Heading">Weekly Countries</h2>
+                        <span class="home-text38 Section-Text">ISSUE 섹터에 대한 설명 추가</span>
+                    </div>
+                    <div class="home-container16">
+                        <div class="home-container17">
+                            <div class="home-left-section2">
+                                <h1 class="home-text41">Company name</h1>
+                                <span class="home-text42">position</span><span class="home-date-time11"><date-time-primitive format="DD/MM/YYYY" date="Fri Apr 25 2025 00:42:06 GMT+0900 (한국 표준시)"></date-time-primitive></span>
+                            </div>
+                            <div class="countries-wrapper">
+                                {% set ns = namespace(counter_countries = 1001) %}
+                                {% for group in valid_cluster_company1_group %}
+                                <div class="slide-countries-grid-1">
+                                    {% for cluster in group %}
+                                    <div class="home-right-section2" onclick="openModal({{ ns.counter_countries }})">
+                                        <h2 class="home-text39">{{ cluster.report_title }}</h2>
+                                        <span class="home-text40">{{ cluster.summary }}</span>
+                                        <span class="home-date-time10"><date-time-primitive format="DD/MM/YYYY" date="Fri Apr 25 2025 00:42:06 GMT+0900 (한국 표준시)"></date-time-primitive></span>
+                                        {% set ns.counter_countries = ns.counter_countries + 1 %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="countries-next-button" onclick="nextSlide_countries(1)"></div>
 
+                        </div>
+                        <div class="home-container17">
+
+                            <div class="home-left-section3">
+                                <h1 class="home-text45">Company name</h1>
+                                <span class="home-text46">position</span><span class="home-date-time13"><date-time-primitive format="DD/MM/YYYY" date="Fri Apr 25 2025 00:42:06 GMT+0900 (한국 표준시)"></date-time-primitive></span>
+                            </div>
+                            <div class="countries-wrapper">
+                                {% for group in valid_cluster_company2_group %}
+                                <div class="slide-countries-grid-2">
+                                    {% for cluster in group %}
+                                    <div class="home-right-section2" onclick="openModal({{ ns.counter_countries }})">
+                                        <h2 class="home-text39">{{ cluster.report_title }}</h2>
+                                        <span class="home-text40">{{ cluster.summary }}</span>
+                                        <span class="home-date-time10"><date-time-primitive format="DD/MM/YYYY" date="Fri Apr 25 2025 00:42:06 GMT+0900 (한국 표준시)"></date-time-primitive></span>
+                                        {% set ns.counter_countries = ns.counter_countries + 1 %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="countries-next-button" onclick="nextSlide_countries(2)"></div>
+                        </div>
+                        <div class="home-container17">
+
+                            <div class="home-left-section4">
+                                <h1 class="home-text49">Company name</h1>
+                                <span class="home-text50">position</span><span class="home-date-time15"><date-time-primitive format="DD/MM/YYYY" date="Fri Apr 25 2025 00:42:06 GMT+0900 (한국 표준시)"></date-time-primitive></span>
+                            </div>
+                            <div class="countries-wrapper">
+                                {% for group in valid_cluster_company3_group %}
+                                <div class="slide-countries-grid-3">
+                                    {% for cluster in group %}
+                                    <div class="home-right-section2" onclick="openModal({{ ns.counter_countries }})">
+                                        <h2 class="home-text39">{{ cluster.report_title }}</h2>
+                                        <span class="home-text40">{{ cluster.summary }}</span>
+                                        <span class="home-date-time10"><date-time-primitive format="DD/MM/YYYY" date="Fri Apr 25 2025 00:42:06 GMT+0900 (한국 표준시)"></date-time-primitive></span>
+                                        {% set ns.counter_countries = ns.counter_countries + 1 %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="countries-next-button" onclick="nextSlide_countries(3)"></div>
+                        </div>
+                    </div>
+                </div>
+                {% set ns = namespace(counter_countries=1001) %}
+                {% for cluster in valid_cluster_company1 %}
+                <!-- 모달 (팝업 창) -->
+                <div id='modal-{{ ns.counter_countries }}' class="modal">
+
+                    <div class="modal-content">
+
+                        <div class="home-navbar-container">
+                            <div class="home-navbar">
+                                ddd
+                                <span onclick="closeModal({{ ns.counter_countries }})" class="close" >CLOSE</span>
+                            </div>
+                        </div>
+
+                        <div class="modal-content-container">
+
+                            <h2 class="modal-content-title">
+                                {{ valid_cluster_company1[loop.index0]['report_title'] }}
+                            </h2>
+                            <p class="modal-content-summary">
+                                {{ valid_cluster_company1[loop.index0]['summary'] }}
+                            </p>
+
+                            <h2 class="modal-content-seperator">
+                                Relative Events
+                            </h2>
+                            <div class="event">
+                                {% for event in valid_cluster_company1[loop.index0].events %}
+                                <div class="event-card">
+                                    <div class="event-row">
+                                        <!-- 왼쪽: event_summary -->
+                                        <div class="event-summary">
+                                            <p class="font-semibold">
+                                                {{ event.event_summary }}
+                                            </p>
+                                        </div>
+                                    
+                                        <!-- 오른쪽: event_explain -->
+                                        <div class="event-explain">
+                                            <p>
+                                                {{ event.event_explain }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <h2 class="modal-content-seperator">
+                                Relative Articles
+                            </h2>      
+                            <div class="modal-news">
+                                {% for card in embeds %}
+                                <div class="modal-news-card" style="display: none;">
+                                    <a href="{{ card.url }}" target="_blank" class="embed-card">
+                                        {% if card.image %}
+                                        <img src="{{ card.image }}" class="embed-card-image">
+                                        {% endif %}
+                                        <div class="embed-card-texts">
+                                        <h3>{{ card.title or "Untitled" }}</h3>
+                                        <p>{{ card.desc or "No description available" }}</p>
+                                        <small>{{ card.url }}</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button id="load-more-news" onclick="loadMoreCards({{ ns.counter_countries }})" class="more">Load More</button>
+                        </div>
+                    </div>
+                    {% set ns.counter_countries = ns.counter_countries + 1 %}                                            
+                </div>
+                {% endfor %}
+
+                {% for cluster in valid_cluster_company2 %}
+                <!-- 모달 (팝업 창) -->
+                <div id='modal-{{ ns.counter_countries }}' class="modal">
+
+                    <div class="modal-content">
+
+                        <div class="home-navbar-container">
+                            <div class="home-navbar">
+                                ddd
+                                <span onclick="closeModal({{ ns.counter_countries }})" class="close" >CLOSE</span>
+                            </div>
+                        </div>
+
+                        <div class="modal-content-container">
+
+                            <h2 class="modal-content-title">
+                                {{ valid_cluster_company2[loop.index0]['report_title'] }}
+                            </h2>
+                            <p class="modal-content-summary">
+                                {{ valid_cluster_company2[loop.index0]['summary'] }}
+                            </p>
+
+                            <h2 class="modal-content-seperator">
+                                Relative Events
+                            </h2>
+                            <div class="event">
+                                {% for event in valid_cluster_company2[loop.index0].events %}
+                                <div class="event-card">
+                                    <div class="event-row">
+                                        <!-- 왼쪽: event_summary -->
+                                        <div class="event-summary">
+                                            <p class="font-semibold">
+                                                {{ event.event_summary }}
+                                            </p>
+                                        </div>
+                                    
+                                        <!-- 오른쪽: event_explain -->
+                                        <div class="event-explain">
+                                            <p>
+                                                {{ event.event_explain }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <h2 class="modal-content-seperator">
+                                Relative Articles
+                            </h2>      
+                            <div class="modal-news">
+                                {% for card in embeds %}
+                                <div class="modal-news-card" style="display: none;">
+                                    <a href="{{ card.url }}" target="_blank" class="embed-card">
+                                        {% if card.image %}
+                                        <img src="{{ card.image }}" class="embed-card-image">
+                                        {% endif %}
+                                        <div class="embed-card-texts">
+                                        <h3>{{ card.title or "Untitled" }}</h3>
+                                        <p>{{ card.desc or "No description available" }}</p>
+                                        <small>{{ card.url }}</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button id="load-more-news" onclick="loadMoreCards({{ ns.counter_countries }})" class="more">Load More</button>
+                        </div>
+                    </div>  
+                    {% set ns.counter_countries = ns.counter_countries + 1 %}                                          
+                </div>
+                {% endfor %}
+
+                {% for cluster in valid_cluster_company3 %}
+                <!-- 모달 (팝업 창) -->
+                <div id='modal-{{ ns.counter_countries }}' class="modal">
+
+                    <div class="modal-content">
+
+                        <div class="home-navbar-container">
+                            <div class="home-navbar">
+                                ddd
+                                <span onclick="closeModal({{ ns.counter_countries }})" class="close" >CLOSE</span>
+                            </div>
+                        </div>
+
+                        <div class="modal-content-container">
+
+                            <h2 class="modal-content-title">
+                                {{ valid_cluster_company3[loop.index0]['report_title'] }}
+                            </h2>
+                            <p class="modal-content-summary">
+                                {{ valid_cluster_company3[loop.index0]['summary'] }}
+                            </p>
+
+                            <h2 class="modal-content-seperator">
+                                Relative Events
+                            </h2>
+                            <div class="event">
+                                {% for event in valid_cluster_company3[loop.index0].events %}
+                                <div class="event-card">
+                                    <div class="event-row">
+                                        <!-- 왼쪽: event_summary -->
+                                        <div class="event-summary">
+                                            <p class="font-semibold">
+                                                {{ event.event_summary }}
+                                            </p>
+                                        </div>
+                                    
+                                        <!-- 오른쪽: event_explain -->
+                                        <div class="event-explain">
+                                            <p>
+                                                {{ event.event_explain }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <h2 class="modal-content-seperator">
+                                Relative Articles
+                            </h2>      
+                            <div class="modal-news">
+                                {% for card in embeds %}
+                                <div class="modal-news-card" style="display: none;">
+                                    <a href="{{ card.url }}" target="_blank" class="embed-card">
+                                        {% if card.image %}
+                                        <img src="{{ card.image }}" class="embed-card-image">
+                                        {% endif %}
+                                        <div class="embed-card-texts">
+                                        <h3>{{ card.title or "Untitled" }}</h3>
+                                        <p>{{ card.desc or "No description available" }}</p>
+                                        <small>{{ card.url }}</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button id="load-more-news" onclick="loadMoreCards({{ ns.counter_countries }})" class="more">Load More</button>
+                        </div>
+                    </div>        
+                    {% set ns.counter_countries = ns.counter_countries + 1 %}                                    
+                </div>
+                {% endfor %}                
+                <div class="home-section-separator3"></div>
                 <div id="Social" class="home-follow-more">
                     <h2 class="home-text73 Section-Heading">Follow More on Social Media</h2>
                     <div class="home-content-container19">

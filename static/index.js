@@ -87,18 +87,34 @@ slideIndexMap.set('grid-1', 0);
 slideIndexMap.set('grid-2', 0);
 slideIndexMap.set('grid-3', 0);
 
-function updateSlide(slideIndex, nextIndex) {
-  const slides = document.querySelectorAll(`.slide-people-grid-${slideIndex}`);
+function updateSlide_countries(slideIndex, nextIndex) {
+  const slides = document.querySelectorAll(`.slide-countries-grid-${slideIndex}`);
   slides.forEach((slide, i) => {
     slide.style.transform = `translateX(-${nextIndex * 100}%)`;
     slide.style.transition = 'transform 0.5s ease';
   });
 }
 
-function nextSlide(slideIndex) {
-  const slides = document.querySelectorAll(`.slide-people-grid-${slideIndex}`);
+function nextSlide_countries(slideIndex) {
+  const slides = document.querySelectorAll(`.slide-countries-grid-${slideIndex}`);
   const currentIndex = slideIndexMap.get(`grid-${slideIndex}`);
   const nextIndex = (currentIndex + 1) % slides.length;
   slideIndexMap.set(`grid-${slideIndex}`, nextIndex);
-  updateSlide(slideIndex, nextIndex);
+  updateSlide_countries(slideIndex, nextIndex);
+}
+
+function updateSlide_companies(slideIndex, nextIndex) {
+  const slides = document.querySelectorAll(`.slide-companies-grid-${slideIndex}`);
+  slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(-${nextIndex * 100}%)`;
+    slide.style.transition = 'transform 0.5s ease';
+  });
+}
+
+function nextSlide_companies(slideIndex) {
+  const slides = document.querySelectorAll(`.slide-companies-grid-${slideIndex}`);
+  const currentIndex = slideIndexMap.get(`grid-${slideIndex}`);
+  const nextIndex = (currentIndex + 1) % slides.length;
+  slideIndexMap.set(`grid-${slideIndex}`, nextIndex);
+  updateSlide_companies(slideIndex, nextIndex);
 }
