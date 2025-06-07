@@ -25,4 +25,4 @@ COPY . .
 COPY .env .env
 
 # FastAPI를 uvicorn으로 실행
-CMD ["uvicorn", "back:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "new_back:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
