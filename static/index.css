@@ -1166,6 +1166,28 @@
   padding: 0.75rem;
 }
 
+.card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;     /* 줄 수 제한: 2줄 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4em;
+    max-height: 2.8em;         /* 1.4em * 2줄 */
+    word-break: break-word;
+}
+
+.card-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;     /* 줄 수 제한: 3줄 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4em;
+    max-height: 4.2em;         /* 1.4em * 3줄 */
+    word-break: break-word;
+}
+
 .more {
   min-width: 130px;
   height: 40px;
@@ -1341,9 +1363,7 @@ body.modal-open {
   display: flex;
   padding: var(--dl-layout-space-doubleunit);
   max-width: auto;
-  align-self: stretch;
   box-shadow: 5px 5px 10px 0px #d4d4d4;
-  align-items: flex-start;
   border-color: #ffffff;
   border-style: hidden;
   border-width: 2px;
@@ -1370,7 +1390,7 @@ body.modal-open {
 
 .slide-countries-grid-1 {
   width: 100%;
-  margin-right: 1%;
+  margin-right: 0%;
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);  /* 3열 그리드 */
@@ -1383,7 +1403,7 @@ body.modal-open {
 
 .slide-countries-grid-2 {
   width: 100%;
-  margin-right: 1%;
+  margin-right: 0%;
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);  /* 3열 그리드 */
@@ -1395,7 +1415,7 @@ body.modal-open {
 
 .slide-countries-grid-3 {
   width: 100%;
-  margin-right: 1%;
+  margin-right: 0%;
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);  /* 3열 그리드 */
@@ -1426,7 +1446,33 @@ body.modal-open {
 
 
 .countries-next-button:active {
+  filter: drop-shadow(0px 0px 0px black);
+  border-left: 25px solid rgb(42, 42, 42);
+}
 
+.countries-prev-button {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  border: 0;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  border-left: 5px solid transparent;
+  border-right: 25px solid rgb(33, 33, 33);
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  filter: drop-shadow(1px 1px 1px black);
+}
+
+
+.countries-prev-button:hover {
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+
+.countries-prev-button:active {
+  filter: drop-shadow(0px 0px 0px black);
+  border-right: 25px solid rgb(42, 42, 42);
 }
 
 .companies-wrapper {
@@ -1438,7 +1484,7 @@ body.modal-open {
 
 .slide-companies-grid-1 {
   width: 100%;
-  margin-right: 1%;
+  margin-right: 0%;
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);  /* 3열 그리드 */
@@ -1451,7 +1497,7 @@ body.modal-open {
 
 .slide-companies-grid-2 {
   width: 100%;
-  margin-right: 1%;
+  margin-right: 0%;
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);  /* 3열 그리드 */
@@ -1463,7 +1509,7 @@ body.modal-open {
 
 .slide-companies-grid-3 {
   width: 100%;
-  margin-right: 1%;
+  margin-right: 0%;
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);  /* 3열 그리드 */
@@ -1498,10 +1544,37 @@ body.modal-open {
   border-left: 25px solid rgb(42, 42, 42);
 }
 
-.home-text39 {
+.companies-prev-button {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  border: 0;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  border-left: 5px solid transparent;
+  border-right: 25px solid rgb(33, 33, 33);
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  filter: drop-shadow(1px 1px 1px black);
+}
 
+
+.companies-prev-button:hover {
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+
+.companies-prev-button:active {
+  filter: drop-shadow(0px 0px 0px black);
+  border-right: 25px solid rgb(42, 42, 42);
+}
+
+.home-text39 {
+  display: -webkit-box;
   overflow: hidden;
+  -webkit-line-clamp: 3;
   text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -1521,9 +1594,10 @@ body.modal-open {
  
 .home-date-time10 {
   display: flex;
-  align-self: flex-end;
+  align-self: flex-start;
   min-height: auto;
   font-family: "Arial";
+  margin-top: auto;
 }
  
 .home-left-section2 {
@@ -1824,6 +1898,16 @@ body.modal-open {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.home-cards-container2-wrapper {
+  width: 100%;
+  display: flex;
+  background-color: rgb(215, 215, 215);
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: #efefef;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 10px 0px -12px inset, rgba(0, 0, 0, 0.3) 0px 15px 33px -18px inset;
+}
  
 .home-service-card1 {
   width: 30%;
@@ -1839,7 +1923,7 @@ body.modal-open {
 
 .home-service-card1:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  filter: drop-shadow(5px 5px 5px rgb(255, 255, 255));
   cursor: pointer;
 }
  
@@ -1889,7 +1973,7 @@ body.modal-open {
 
 .home-service-card2:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  filter: drop-shadow(5px 5px 5px rgb(255, 255, 255));
   cursor: pointer;
 }
  
@@ -1939,7 +2023,7 @@ body.modal-open {
 
 .home-service-card3:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  filter: drop-shadow(5px 5px 5px rgb(255, 255, 255));
   cursor: pointer;
 }
  

@@ -33,10 +33,10 @@ except Exception as e:
 db = client["test_db"]
 test_collection = db["test_collection"]
 raw_data_collection = db["raw_data"]
-valid_cluster_collection = db["valid_cluster"]
-valid_cluster_company_collection1 = db["valid_cluster_company1"]
-valid_cluster_company_collection2 = db["valid_cluster_company1"]
-valid_cluster_company_collection3 = db["valid_cluster_company1"]
+valid_cluster_collection = db["cluster_reports"]
+valid_cluster_countries_collection1 = db["valid_cluster_country1"]
+valid_cluster_countries_collection2 = db["valid_cluster_country2"]
+valid_cluster_countries_collection3 = db["valid_cluster_country3"]
 ################################################################################################fastapi
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))   # back.py가 있는 디렉토리
 STATIC_DIR = os.path.join(BASE_DIR, "static")            # 같은 폴더 안에 static 폴더를 두고 싶다면
@@ -121,21 +121,56 @@ def chunk(lst, size):
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     # 1. MongoDB 문서 가져오기
-    documents = list(test_collection.find({}, {"_id": 0}))
-    raw_documents = list(raw_data_collection.find({}, {"_id": 0}))
-    valid_cluster_documents = list(valid_cluster_collection.find({}, {"_id": 0})) 
-    valid_cluster_company_documents1 = list(valid_cluster_company_collection1.find({}, {"id":0}))
-    valid_cluster_company_documents2 = list(valid_cluster_company_collection2.find({}, {"id":0}))
-    valid_cluster_company_documents3 = list(valid_cluster_company_collection3.find({}, {"id":0}))
-    # valid_cluster_people를 3개씩 묶음
-    company_clusters1_group = chunk(valid_cluster_company_documents1, 3)
-    # valid_cluster_people를 3개씩 묶음
-    company_clusters2_group = chunk(valid_cluster_company_documents2, 3)
-    # valid_cluster_people를 3개씩 묶음
-    company_clusters3_group = chunk(valid_cluster_company_documents3, 3)
+    documents = list(test_collection.find({}))
+    valid_cluster_documents = list(valid_cluster_collection.find({})) 
+    #valid_cluster_documents의 "_id" key 기준으로 내림차순 정렬
+    valid_cluster_documents.sort(key=lambda x: x["_id"], reverse=True)
+    valid_cluster_countries_documents1 = list(valid_cluster_countries_collection1.find({}))
+    valid_cluster_countries_documents1.sort(key=lambda x: x["_id"], reverse=True)
+
+    valid_cluster_countries_documents2 = list(valid_cluster_countries_collection2.find({}))
+    valid_cluster_countries_documents2.sort(key=lambda x: x["_id"], reverse=True)
+
+    valid_cluster_countries_documents3 = list(valid_cluster_countries_collection3.find({}))
+    valid_cluster_countries_documents3.sort(key=lambda x: x["_id"], reverse=True)
+
+    # valid_cluster를 3개씩 묶음
+    countries_clusters1_group = chunk(valid_cluster_countries_documents1, 3)
+    # valid_cluster를 3개씩 묶음
+    countries_clusters2_group = chunk(valid_cluster_countries_documents2, 3)
+    # valid_cluster를 3개씩 묶음
+    countries_clusters3_group = chunk(valid_cluster_countries_documents3, 3)
+
 
     # 2. URL 기반 OG 메타데이터 카드 생성
-    embeds = [fetch_og_meta(doc["url"]) for doc in raw_documents if "url" in doc]
+    embeds_issue = [
+        [fetch_og_meta(link) for link in doc["links"]]
+        for doc in valid_cluster_documents[:7]
+        if "links" in doc
+    ]
+
+    embeds_countries1 = [
+        [fetch_og_meta(link) for link in doc["links"]]
+        for doc in valid_cluster_countries_documents1
+        if "links" in doc
+    ]
+
+    embeds_countries2 = [
+        [fetch_og_meta(link) for link in doc["links"]]
+        for doc in valid_cluster_countries_documents2
+        if "links" in doc
+    ]
+
+    embeds_countries3 = [
+        [fetch_og_meta(link) for link in doc["links"]]
+        for doc in valid_cluster_countries_documents3
+        if "links" in doc
+    ]
+
+    embeds_countries = [embeds_countries1, embeds_countries2, embeds_countries3]
+    
+
+    # 3. 티커 데이터 수집
 
     tickers = {"^KS11":"KOSPI",
             "KRW=X":"KRW/USD",
@@ -152,13 +187,14 @@ async def read_root(request: Request):
         "request": request,
         "documents": documents,
         "tickers": result,
-        "embeds": embeds,
+        "embeds": embeds_issue,
+        "embeds_countries": embeds_countries,
         "valid_cluster": valid_cluster_documents,
-        "valid_cluster_company1_group": company_clusters1_group,
-        "valid_cluster_company2_group": company_clusters2_group,
-        "valid_cluster_company3_group": company_clusters3_group,
-        "valid_cluster_company1": valid_cluster_company_documents1,
-        "valid_cluster_company2": valid_cluster_company_documents2,
-        "valid_cluster_company3": valid_cluster_company_documents3
+        "valid_cluster_countries1_group": countries_clusters1_group,
+        "valid_cluster_countries2_group": countries_clusters2_group,
+        "valid_cluster_countries3_group": countries_clusters3_group,
+        "valid_cluster_countries1": valid_cluster_countries_documents1,
+        "valid_cluster_countries2": valid_cluster_countries_documents2,
+        "valid_cluster_countries3": valid_cluster_countries_documents3
 
     })

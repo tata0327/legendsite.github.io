@@ -103,6 +103,15 @@ function nextSlide_countries(slideIndex) {
   updateSlide_countries(slideIndex, nextIndex);
 }
 
+function prevSlide_countries(slideIndex) {
+  const slides = document.querySelectorAll(`.slide-countries-grid-${slideIndex}`);
+  const currentIndex = slideIndexMap.get(`grid-${slideIndex}`);
+  const nextIndex = (currentIndex - 1) % slides.length;
+  slideIndexMap.set(`grid-${slideIndex}`, nextIndex);
+  updateSlide_countries(slideIndex, nextIndex);
+}
+
+
 function updateSlide_companies(slideIndex, nextIndex) {
   const slides = document.querySelectorAll(`.slide-companies-grid-${slideIndex}`);
   slides.forEach((slide, i) => {
@@ -115,6 +124,14 @@ function nextSlide_companies(slideIndex) {
   const slides = document.querySelectorAll(`.slide-companies-grid-${slideIndex}`);
   const currentIndex = slideIndexMap.get(`grid-${slideIndex}`);
   const nextIndex = (currentIndex + 1) % slides.length;
+  slideIndexMap.set(`grid-${slideIndex}`, nextIndex);
+  updateSlide_companies(slideIndex, nextIndex);
+}
+
+function prevSlide_companies(slideIndex) {
+  const slides = document.querySelectorAll(`.slide-companies-grid-${slideIndex}`);
+  const currentIndex = slideIndexMap.get(`grid-${slideIndex}`);
+  const nextIndex = (currentIndex - 1) % slides.length;
   slideIndexMap.set(`grid-${slideIndex}`, nextIndex);
   updateSlide_companies(slideIndex, nextIndex);
 }
