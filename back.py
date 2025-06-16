@@ -7,7 +7,6 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import os
 from bs4 import BeautifulSoup
-import requests
 import urllib.parse
 from authlib.integrations.starlette_client import OAuth
 from starlette.config import Config
@@ -149,7 +148,7 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 app.add_middleware(
     SessionMiddleware,
-    secret_key=os.getenv("SESSION_SECRET_KEY", "1234")
+    secret_key=os.getenv("SESSION_SECRET_KEY")
 )
 
 

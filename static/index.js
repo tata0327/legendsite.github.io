@@ -48,12 +48,12 @@ function loadMoreCards(modalIndex) {
   });
 
   // 다음 8개만 표시
-  for (let i = visibleCount; i < visibleCount + 8 && i < cards.length; i++) {
+  for (let i = visibleCount; i < visibleCount + 4 && i < cards.length; i++) {
     cards[i].style.display = "block";
   }
 
   // 카드 전부 노출되면 버튼 숨기기
-  if (visibleCount + 8 >= cards.length && button) {
+  if (visibleCount + 4 >= cards.length && button) {
     button.style.display = "none";
   }
 }
@@ -61,7 +61,7 @@ function loadMoreCards(modalIndex) {
 function resetCards(modalIndex) {
   const modal = document.getElementById(`modal-${modalIndex}`);
   const cards = modal.querySelectorAll(".modal-news-card");
-  let visibleCount = 8;
+  let visibleCount = 4;
 
   cards.forEach((card, index) => {
     card.style.display = index < visibleCount ? "block" : "none";
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const allNewsContainers = document.querySelectorAll(".modal-news");
   allNewsContainers.forEach(container => {
     const cards = container.querySelectorAll(".modal-news-card");
-    for (let i = 0; i < 8 && i < cards.length; i++) {
+    for (let i = 0; i < 4 && i < cards.length; i++) {
       cards[i].style.display = "block";
     }
   });
