@@ -19,6 +19,7 @@ import secrets
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
 import time
+from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 
 
 #uvicorn back:app --reload
@@ -151,6 +152,7 @@ app.add_middleware(
     secret_key=os.getenv("SESSION_SECRET_KEY")
 )
 
+app.add_middleware(ProxyHeadersMiddleware)
 
 # templates 설정
 templates = Jinja2Templates(directory=TEMPLATES_DIR)
