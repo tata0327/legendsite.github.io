@@ -127,9 +127,9 @@ def insert_og_dict(clusters: list[dict], og_dict: dict) -> list[dict]:
     return new_clusters
 
 def date_filter(clusters: list[dict], cutoff: int) -> list[dict]:
-    threshold = datetime.now() - timedelta(days=cutoff)
-
-    def is_recent(doc):
+    
+    def is_recent(doc, cutoff):
+        threshold = datetime.now() - timedelta(days=cutoff)
         try:
             dt_str = doc["cluster_id"].split("_")[0] 
             dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M:%S")
@@ -137,7 +137,14 @@ def date_filter(clusters: list[dict], cutoff: int) -> list[dict]:
         except Exception:
             return False
 
-    return [doc for doc in clusters if is_recent(doc)]
+    while len(valid_docs) == 0:
+        valid_docs = []
+        for doc in clusters:
+            if is_recent(doc, cutoff):
+                valid_docs.append(doc)
+        cutoff += 1
+
+    return valid_docs
 
 
 app = FastAPI()
