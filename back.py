@@ -137,8 +137,8 @@ def date_filter(clusters: list[dict], cutoff: int) -> list[dict]:
         except Exception:
             return False
 
+    valid_docs = []
     while len(valid_docs) == 0:
-        valid_docs = []
         for doc in clusters:
             if is_recent(doc, cutoff):
                 valid_docs.append(doc)
